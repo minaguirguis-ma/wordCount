@@ -22,6 +22,6 @@ fdist = FreqDist(all_tokens)
 print(fdist.most_common(10))
 
 dataDisplay = (fdist.most_common(10)[0])
-df = pd.DataFrame(dataDisplay, columns=["x", '# of occurences'])
+df = pd.DataFrame(dataDisplay, columns=['x', '# of occurences'])
 
 fig = px.bar(df, x='words', y='# of occurences')
