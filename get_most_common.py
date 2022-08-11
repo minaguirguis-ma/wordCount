@@ -5,6 +5,8 @@ nltk.download('punkt')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk import FreqDist
+import plotly.express as px
+import pandas as pd
 
 stop_words = set(stopwords.words('english'))
 f = open('BadHabit.txt')
@@ -18,3 +20,8 @@ for line in lines:
     all_tokens = all_tokens + filtered
 fdist = FreqDist(all_tokens)
 print(fdist.most_common(10))
+
+dataDisplay = (fdist.most_common(10)[0])
+df = pd.DataFrame(dataDisplay, columns=["x", '# of occurences'])
+
+fig = px.bar(df, x='words', y='# of occurences')
